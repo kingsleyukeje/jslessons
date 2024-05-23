@@ -395,4 +395,3 @@ const lion = new SingleAnimal("Lion", "Male", "Africa")
 const falcon = new SingleAnimal("Falcon", "Male", "Africa", true)
 
 console.log(falcon.fly(falcon.canFly))
-console.log(falcon.fly(falcon.canFly))
