@@ -158,10 +158,68 @@
 // functions
 // function declaration in javascript
 
- function aNewFunction() { // function declaration with function keyword
-    // console.log("function executed")
-    return 2
+ function asstA() { // function declaration with function keyword
+    return "asst A"
  }
+
+ function asstB () {
+  console.log("asst B")
+ }
+
+
+function asstD (money, list, item) {  // function that takes parameters  
+  return money+list+item
+}
+asstD(2, 5, 7) // invoked with arguments
+
+//console.log(assistantD(2, 6, 7))
+const testMethods = { //properties in objescts are stored in key:value pairs
+    methodOne: function () { return "I am method one"},//methodOne = function () { return "I am method one"}
+    nestedMethod: {
+    nestedmethodone: function () { return "I am method one"}
+  }
+  //name: "Ekpa",
+}
+console.log()
+testMethods.nestedMethod.nestedmethodone() // method invocation
+
+
+//arrays
+const testArray = [
+  {
+  methodOne: function () { return "I am the first one"},//methodOne = function () { return "I am method one"}
+  nestedMethod1: {
+  nestedmethodone1: function () { return "The first nested one"}}
+  },
+
+  {
+  methodOne: function () { return "I am method one"},//methodOne = function () { return "I am method one"}
+  nestedMethod: {
+  nestedmethodone: function () { return "I am method one"}}
+  },
+]
+
+const driveArray = [
+  {
+  methodOne: function () { return "I am the first one"},//methodOne = function () { return "I am method one"}
+  nestedMethod1: {
+  nestedmethodone1: function () { return "The first nested one"}}
+  },
+
+  {
+  methodOne: function () { return "I am method one"},//methodOne = function () { return "I am method one"}
+  nestedMethod: {
+  nestedmethodone: function () { return "I am method one"}}
+  },
+]
+//console.log(testArray[1].nestedMethod.nestedmethodone())
+ // method invocation
+
+//console.log("I am method one")
+
+//console.log(testArray[7]) // function invocation
+
+
 
  const sum = () => 2+2 // arrow functions
 //  anything()
@@ -189,15 +247,22 @@ const functionExpression = function (num) { // function expression
 let argumentNum = 26
 let argumentNumToo = 39
 
-// console.log(functionWithArguments(argumentNum, argumentNumToo)+ 20) 
-// console.log(functionWithArguments(9, 7)+ 20) 
-// console.log(functionWithArguments(5, 3)+ 20) 
+
 // higher order functions - a higher order function is a function that takes another function as its parameter/argument
 // a callback function is a function passed as an argument to another function
 
-function hoc(func, aNum, anotherNum) {
-  return func(4, 7)
+function matron(a, b) {
+  a()
+  b()
+  return b()
 }
+
+
+
+
+// function hoc(func, aNum, anotherNum) {
+//   return func(4, 7)
+// }
 
 // function hoc(func, aNum, anotherNum) {
 //   const evaluated = func(aNum, anotherNum)
@@ -206,7 +271,7 @@ function hoc(func, aNum, anotherNum) {
 
 // console.log(hoc(functionWithArguments, argumentNum, argumentNumToo))
 
-const evaluatedFunction = hoc(functionWithArguments, argumentNum, argumentNumToo)
+// const evaluatedFunction = hoc(functionWithArguments, argumentNum, argumentNumToo)
 
 
 
@@ -214,93 +279,200 @@ const evaluatedFunction = hoc(functionWithArguments, argumentNum, argumentNumToo
 
 // array methods
 // what is a method? - A method is a function that is owned by an object
-// Most array method is a higher order function
+// Most array methods are higher order function
+
+
+function highOrderFunction(func) { // a higher order function is a function that takes another function as its argument and returns the invocation of that function
+  return func()
+}
+
+// highOrderFunction(testCallBack)
 // what is a callback? - 
-// const instanceOfArray = new Array() 
+// const instanceOfArray = new Array()
+// const anotherInstanceOfArray = [] 
 
-const aNewArray = ["Ekpa", "Kingsley", "Javascript", "Programming", 5, true]
-// const filteredArray = aNewArray.filter((item, index) => typeof(item) != "string")
-// const filteredArray = aNewArray.filter((item)=>{
-//   if(typeof(item) != "string") {
-//     return item
-//   } else  {
-//     return
-//   }
-// })
+// console.log("object: ", instanceOfArray)
+// console.log("object 2: ", anotherInstanceOfArray)
 
-// const concatArray = aNewArray.concat(7,7)
-// const spreadArray = [...aNewArray, 8, 9, 10]
+const aNewArray = [
+  {
+    name: "Kingsley",
+    accts: ["Access", "GTBS"]
+  }, 
+  {
+    name: "Ekpa",
+    accts: ["Access", "GTB"]
+  }, 
+  
+]
 
-const spreadArrow = (...args) => { //You can only spread arguments in an arrow function
-  console.log("first arg: ", args[2])
-} 
+function testCallBack(boss) { 
+  return boss.accts[1] == "GTB"
+}
 
-// spreadArrow(4, "Ekpa", [])
+const returnOfFind = aNewArray.find(testCallBack).accts.map(item => item +"s").concat("Fidelity")
+// console.log(returnOfFind)
 
-aNewArray.unshift("first")
-// console.log(filteredArray)
-// console.log(aNewArray)
-// console.log(concatArray)
-// console.log(spreadArray)
+const concatVsPush = ["A"]
+const newconcatVsPush =  concatVsPush.concat("B")
+// console.log(concatVsPush)
+// console.log(newconcatVsPush)
+
+// const returnOfFind = aNewArray.find(testCallBack)
+// const accts = returnOfFind.accts
+// const newaccts = accts.map(acct => acct + "s")
+// console.log(newaccts)
+
+
+// instanceOfArray.find()
+// // const filteredArray = aNewArray.filter((item, index) => typeof(item) != "string")
+// // const filteredArray = aNewArray.filter((item)=>{
+// //   if(typeof(item) != "string") {
+// //     return item
+// //   } else  {
+// //     return
+// //   }
+// // })
+
+// // const concatArray = aNewArray.concat(7,7)
+// // const spreadArray = [...aNewArray, 8, 9, 10]
+
+// const spreadArrow = (...args) => { //You can only spread arguments in an arrow function
+//   console.log("first arg: ", args[2])
+// } 
+
+// // spreadArrow(4, "Ekpa", [])
+
+// aNewArray.unshift("first")
+// // console.log(filteredArray)
+// // console.log(aNewArray)
+// // console.log(concatArray)
+// // console.log(spreadArray)
 
 
 
 
-// console.log(typeof("Ekpa")) // "string"
+// // console.log(typeof("Ekpa")) // "string"
 
-// what is 'this' ?
-// the 'this' keyword is a self referencing variable that is used to point at the object in whose method it is called
-// the 'this' can be bound in 4 ways 
-// method 1: window binding/default binding
+// // what is 'this' ?
+// // the 'this' keyword is a self referencing variable that is used to point at the object in whose method it is called
+// // the 'this' can be bound in 4 ways 
 
+// // method 1: window binding/default binding
 // console.log("what is this: ", this) // example of window binding
-// console.log("hoc: ", window.hoc)
+// // console.log("hoc: ", window.hoc)
 
-// method 2: implicit binding. in implicit binding, the 'this' has to be referenced in a method
-// const name="window"
+// // method 2: implicit binding. in implicit binding, the 'this' has to be referenced in a method
+// // const name="window"
+
+function returnThis() {
+  console.log("from return this: ", this)
+}
+
+
 const aTestObject = {
   name: "aTestObject",
   stack: "Frontend",
-  // theThis: this,
-  age: binder
+  aTestObjectThis: function(){
+    return this
+  },
+  age: 30
 }
 
-const manipulatedThis = {
-  a: "A",
-  b: "B",
-  c: "C"
+// console.log(returnThis())
+// console.log(aTestObject.aTestObjectThis())
+
+// const manipulatedThis = {
+//   a: "A",
+//   b: "B",
+//   c: "C"
+// }
+
+// function binder(arg1, arg2) {
+//   console.log("this: ", this)
+//   console.log("args: ", arg1, arg2)
+// }
+
+
+// binder("Arg1", "Arg2")
+// aTestObject.age("Arg1", "Arg2")
+
+
+// //New keyword binding using constructors
+function NewConstructor(name, stack, age) { // Constructors are functions that are used to build instances of an object
+  this.name = name // const name = name
+  this.stack = stack
+  this.age = age
 }
 
-function binder(arg1, arg2) {
-  console.log("this: ", this)
-  console.log("args: ", arg1, arg2)
+function Carconstructor(name, model, color) {
+  this.name = name
+  this.model = model
+  this.year = color
 }
 
+const car1 = new Carconstructor("Toyota", "Camry", 2019)
+const car2 = new Carconstructor("Mercedes", "E-class", 2019)
+// console.log("constructor: ", car1)
+// console.log("constructor: ", car2)
 
-binder("Arg1", "Arg2")
-aTestObject.age("Arg1", "Arg2")
 
 
-//New keyword binding using constructors
-function NewConstructor(name) {
-  this.n = name // creating a variable inside the constructor and assigning the value of the name argument passed in, to that variable
+// const kingsley = new NewConstructor("Kingsley")
+// const ekpa = new NewConstructor("Ekpa")
+
+// // console.log(kingsley.n)
+// // console.log(ekpa)
+
+
+// // explicit binding call, bind, apply
+// returnThis()
+// returnThis.call("This is the new this") // explicit binding manipulates the this to whatever we want it to be
+
+
+
+function useCallMethod(name, title) {
+  console.log("Name: ", name, "title: ", title, "This: ", this)
 }
 
-const kingsley = new NewConstructor("Kingsley")
-const ekpa = new NewConstructor("Ekpa")
+const objectToTestCall = {
+  name: "Ekpa",
+  method: function () {
+    console.log(this)
+  },
+  nestedObject: {
+    nested: {
+      furtherNested: {
+        finalNested: "Final"
+      }
+    }
+  }
+}
 
-// console.log(kingsley.n)
-// console.log(ekpa)
-
-
-// explicit binding call, bind, apply
-// aTestObject.age.call(manipulatedThis, "explicit binding", "call")
-// aTestObject.age.apply(manipulatedThis, ["explicit binding", "apply"])
+// console.log(objectToTestCall.nestedObject.nested.furtherNested)
 
 
 
-// subclassing
+// objectToTestCall.method()
+// objectToTestCall.method.call("My This")
+// objectToTestCall.method()
+
+
+
+// useCallMethod.call("The new This", "Ekpa", "Mister") // call explicit binding
+// useCallMethod.apply("The new This", ["Ekpa", "Mister"]) // apply explicit binding
+const boundThis = useCallMethod.bind("Bound This", "Ekpa", "Mister") // bind explicit binding
+
+
+
+// // aTestObject.age.call(manipulatedThis, "explicit binding", "call")
+// // aTestObject.age.apply(manipulatedThis, ["explicit binding", "apply"])
+
+
+
+// // subclassing
 function Dad(name, age) {
+  // debugger
   this.name = name
   this.age = age
 }
@@ -311,87 +483,96 @@ Dad.prototype.greet = function (){
 }
 
 const dad1 = new Dad("Michael", 50)
-const dad2 = new Dad("Peter", 56)
+// console.log(dad1)
+
+
+
+
+// const dad2 = new Dad("Peter", 56)
 
 function Child(name, age, favouriteToy){  
-  Dad.call(this, name, age) // Dad(name, age)
+  // debugger
+  Dad.call(this, name, age)
   this.favouriteToy = favouriteToy
 }
-
-console.log("object created: ", Object.create(Dad.prototype))
-
 Child.prototype = Object.create(Dad.prototype)
 
+// console.log("object created: ", Object.create(Dad.prototype))
+
+
 const child1 = new Child("John", 10, "Trains")
-console.log(dad1)
-console.log(child1.greet())
+console.log(child1)
+// const child2 = new Child("Sarah", 12, "MedKit")
+// const child3 = new Child("Peter", 14, "Airplanes")
+// console.log(dad1)
+// console.log(child1.greet())
 
 
-// create an animal constructor that takes 3 arguments (name, gender, location)
-// subclass this constructor with two categories of animals - can fly and cannot fly
-// create a function canFly() on the Animal constructor that returns the either of the following "Animal can fly"/"Animal cannot fly" depending on whether the animal can fly
+// // create an animal constructor that takes 3 arguments (name, gender, location)
+// // subclass this constructor with two categories of animals - can fly and cannot fly
+// // create a function canFly() on the Animal constructor that returns the either of the following "Animal can fly"/"Animal cannot fly" depending on whether the animal can fly
 
-function Animal(name, gender, location){
-  this.name = name
-  this.gender = gender
-  this.location = location
-}
+// function Animal(name, gender, location){
+//   this.name = name
+//   this.gender = gender
+//   this.location = location
+// }
 
-function CanFly(name, gender, location, fly=true){
-  Animal.call(this, name, gender, location)
-  this.fly = fly
-}
+// function CanFly(name, gender, location, fly=true){
+//   Animal.call(this, name, gender, location)
+//   this.fly = fly
+// }
 
-function CannotFly(name, gender, location, fly=false){
-  Animal.call(this, name, gender, location)
-  this.fly = fly
-}
+// function CannotFly(name, gender, location, fly=false){
+//   Animal.call(this, name, gender, location)
+//   this.fly = fly
+// }
 
-const eagle = new CanFly("Eagle", "male", "mountain")
-const deer = new CannotFly("Deer", "male", "Forest")
+// const eagle = new CanFly("Eagle", "male", "mountain")
+// const deer = new CannotFly("Deer", "male", "Forest")
 
-// eagle.canFly() // Animal can fly
-// deer.canFly() // Animal cannot fly
+// // eagle.canFly() // Animal can fly
+// // deer.canFly() // Animal cannot fly
 
-console.log(eagle)
+// console.log(eagle)
 
-// es6 classes
-class Animal2 {
-  constructor (name, gender, location){
-    this.name = name
-    this.gender = gender
-    this.location = location
-  }  
+// // es6 classes
+// class Animal2 {
+//   constructor (name, gender, location){
+//     this.name = name
+//     this.gender = gender
+//     this.location = location
+//   }  
 
-  roar() {
-    return "I can roar"
-  }
-  intro() {
-    return "I am a "+this.gender+" "+this.name
-  }
+//   roar() {
+//     return "I can roar"
+//   }
+//   intro() {
+//     return "I am a "+this.gender+" "+this.name
+//   }
 
-  fly(flyStatus) {
-    debugger
-    if(flyStatus) {
-      debugger
-      return "Animal can Fly"
-    }
-    return "Animal cannot Fly"
-  }
-}
+//   fly(flyStatus) {
+//     debugger
+//     if(flyStatus) {
+//       debugger
+//       return "Animal can Fly"
+//     }
+//     return "Animal cannot Fly"
+//   }
+// }
 
-// console.log(lion.intro())
+// // console.log(lion.intro())
 
-// subclassing es6
-class SingleAnimal extends Animal2 {
-  constructor (name, gender, location, canFly=false) { //
-    super(name, gender, location)
-    this.canFly = canFly
-  }
+// // subclassing es6
+// class SingleAnimal extends Animal2 {
+//   constructor (name, gender, location, canFly=false) { //
+//     super(name, gender, location)
+//     this.canFly = canFly
+//   }
   
-}
+// }
 
-const lion = new SingleAnimal("Lion", "Male", "Africa")
-const falcon = new SingleAnimal("Falcon", "Male", "Africa", true)
+// const lion = new SingleAnimal("Lion", "Male", "Africa")
+// const falcon = new SingleAnimal("Falcon", "Male", "Africa", true)
 
-console.log(falcon.fly(falcon.canFly))
+// console.log(falcon.fly(falcon.canFly))

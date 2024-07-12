@@ -10,10 +10,22 @@
     background-color: green;
     
 } */
-div {
-    background-color: yellow;
+
+
+#grid, .grid {
+    display: flex;
+    width: 307px;
+    flex-wrap: wrap;
 }
 
-button {
-    background-color: orange;
+.box {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    color: white;
 }
